@@ -1,3 +1,56 @@
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~ Section 2 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+entry = c(500,1182,150,460,340,14)
+
+# Table 1:
+
+MakeTable <- function(entry){
+  mat = matrix(entry,3,2)
+  cs  = colSums(mat)
+  rs  = rowSums(mat)
+  tot = sum(mat)
+  out = matrix(0,4,3)
+  out[1:3,1:2] = mat
+  out[1:3,3] = rs
+  out[4,1:2] = cs
+  out[4,3] = tot
+  return(out)
+}
+
+MakeTable(entry)
+
+# Table 2:
+
+CalcProbs <- function(entry){
+  mat = matrix(entry,3,2)
+  cs  = colSums(mat)
+  rs  = rowSums(mat)
+  tot = sum(mat)
+  out = matrix(rs)%*%t(matrix(cs))/tot^2
+  return(out)
+}
+
+prbs = CalcProbs(entry)
+MakeTable(prbs)
+
+# Table 3
+
+n = sum(entry)
+MakeTable(CalcProbs(entry)*n)
+
+# Tables 4 - 7
+
+ent = rmultinom(1,n,prbs)
+MakeMatrix(ent)
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~ Section 3 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 cat("\014")
 graphics.off()
 
@@ -48,3 +101,6 @@ ans1 <- simulator(mu,sig,N,n=10,MC,statistic=mean)
 # ans2 <- simulator(mu,sig,N,n=30,MC,statistic=mean)
 # ans3 <- simulator(mu,sig,N,n=10,MC,statistic=max)
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
