@@ -1,6 +1,8 @@
 cat("\014")
 graphics.off()
 
+# Figure 2 and Table 11:
+
 simulator <- function(mu,            #Specify the 'population' mean
 	sig,           #Specify the 'population' standard deviation
 	N,             #Specify the 'population' size
@@ -43,8 +45,6 @@ sig <- 13.5
 MC  <- 1e4
 
 ans1 <- simulator(mu,sig,N,n=10,MC,statistic=mean)
-
 # ans2 <- simulator(mu,sig,N,n=30,MC,statistic=mean)
 # ans3 <- simulator(mu,sig,N,n=10,MC,statistic=max)
 
-QQQ
