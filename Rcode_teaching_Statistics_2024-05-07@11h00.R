@@ -47,3 +47,4 @@ ans1 <- simulator(mu,sig,N,n=10,MC,statistic=mean)
 # ans2 <- simulator(mu,sig,N,n=30,MC,statistic=mean)
 # ans3 <- simulator(mu,sig,N,n=10,MC,statistic=max)
 
+QQQ
